@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="e2eSpec"
+             errors="0"
+             failures="0"
+             tests="2">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Test 1" package="e2eSpec" skipped="2"
+    tests="2" time="" timestamp="">
+    
+    
+    
+      <system-err>
+        Object #&lt;Object&gt; has no method &#39;elementPresent&#39;
+      </system-err>
+    
+    </testsuite>
+  
+</testsuites>

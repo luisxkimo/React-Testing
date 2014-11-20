@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="e2eSpec"
+             errors="0"
+             failures="0"
+             tests="3">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Test 1" package="e2eSpec" skipped="0"
+    tests="3" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 213 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;select&gt; was visible after 85 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute value of &lt;#kitchenDisplays &gt; option:first-child&gt; equals &quot;0&quot;.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

@@ -1,0 +1,35 @@
+09:18:47.238 INFO - Launching a standalone server
+Setting system property webdriver.chrome.driver to node_modules/selenium-standalone/.selenium/2.44.0/chromedriver
+09:18:47.453 INFO - Java: Oracle Corporation 24.71-b01
+09:18:47.453 INFO - OS: Windows 7 6.1 x86
+09:18:47.469 INFO - v2.44.0, with Core v2.44.0. Built from revision 76d78cf
+09:18:47.862 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+09:18:47.864 INFO - Version Jetty/5.1.x
+09:18:47.865 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+09:18:47.866 INFO - Started HttpContext[/selenium-server,/selenium-server]
+09:18:47.866 INFO - Started HttpContext[/,/]
+09:18:48.056 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@1a5f0f3
+09:18:48.056 INFO - Started HttpContext[/wd,/wd]
+09:18:48.065 INFO - Started SocketListener on 0.0.0.0:4444
+09:18:48.065 INFO - Started org.openqa.jetty.jetty.Server@accd65
+09:18:49.028 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e Spec}]])
+09:18:49.055 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e Spec}]
+Starting ChromeDriver 2.12.301325 (962dea43ddd90e7e4224a03fa3c36a421281abb7) on port 33050
+Only local connections are allowed.
+09:18:54.365 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e Spec}]]
+09:18:54.384 INFO - Executing: [get: E:/Desarrollo/reactjs-test_CON_NIGHTWATCH/reactjs-test/index.html])
+09:18:55.309 INFO - Done: [get: E:/Desarrollo/reactjs-test_CON_NIGHTWATCH/reactjs-test/index.html]
+09:18:55.323 INFO - Executing: [find element: By.selector: body])
+09:18:55.413 INFO - Done: [find element: By.selector: body]
+09:18:55.421 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (acc7e4523eee22d35b3e71fc05d930cf)] -> css selector: body]])
+09:18:55.528 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (acc7e4523eee22d35b3e71fc05d930cf)] -> css selector: body]]
+09:18:55.536 INFO - Executing: [find element: By.selector: select])
+09:18:55.580 INFO - Done: [find element: By.selector: select]
+09:18:55.586 INFO - Executing: [is displayed: 1 [[ChromeDriver: chrome on XP (acc7e4523eee22d35b3e71fc05d930cf)] -> css selector: select]])
+09:18:55.617 INFO - Done: [is displayed: 1 [[ChromeDriver: chrome on XP (acc7e4523eee22d35b3e71fc05d930cf)] -> css selector: select]]
+09:18:55.625 INFO - Executing: [find element: By.selector: #kitchenDisplays > option:first-child])
+09:18:55.790 INFO - Done: [find element: By.selector: #kitchenDisplays > option:first-child]
+09:18:55.794 INFO - Executing: [get element attribute: 2 [[ChromeDriver: chrome on XP (acc7e4523eee22d35b3e71fc05d930cf)] -> css selector: #kitchenDisplays > option:first-child], value])
+09:18:55.830 INFO - Done: [get element attribute: 2 [[ChromeDriver: chrome on XP (acc7e4523eee22d35b3e71fc05d930cf)] -> css selector: #kitchenDisplays > option:first-child], value]
+09:18:55.848 INFO - Executing: [delete session: 0f370081-408e-4afa-a324-524cd42c062b])
+09:18:57.196 INFO - Done: [delete session: 0f370081-408e-4afa-a324-524cd42c062b]
