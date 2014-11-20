@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
     <title>Pruebas Css</title>
-    <link rel="stylesheet" href="css/animate.css"/>
+    <!--<link rel="stylesheet" href="css/animate.css"/>-->
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/test.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -20,7 +21,7 @@ $(function(){
          var newOrder = $('<div></div>');
          newOrder.attr('id', identity);
          newOrder.addClass('order');
-         newOrder.addClass('animated zoomIn');
+         newOrder.addClass('fadeIn');
          var count = Math.floor((Math.random() * 3) + 1);
 
          for(i = 0; i < count; i++){
@@ -37,7 +38,7 @@ $(function(){
         var divs = main.getElementsByTagName('div');
         var lastDiv = divs[divs.length-1];
 
-        main.removeChild(lastDiv);
+        main.removeChild(lastDiv).delay(1000);
     });
 
     function S4() {
