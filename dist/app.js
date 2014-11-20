@@ -18649,7 +18649,7 @@ var Configuration = React.createClass({displayName: 'Configuration',
 
         return React.createElement("div", {id: "mainContainer"}
 
-            
+
 
         )
 
@@ -18882,7 +18882,7 @@ $(function(){
 
 },{"./components/AppScreen.js":152,"react":147}],160:[function(require,module,exports){
 module.exports=require(148)
-},{"./Messages":162,"E:\\Desarrollo\\reactjs-test\\src\\Services\\Bus.js":148}],161:[function(require,module,exports){
+},{"./Messages":162,"E:\\Desarrollo\\React-Testing\\src\\Services\\Bus.js":148}],161:[function(require,module,exports){
 /*global require, module, window */
 
 function Localize() {
@@ -18960,8 +18960,8 @@ module.exports = new Localize();
 
 },{"./Settings":164}],162:[function(require,module,exports){
 module.exports=require(149)
-},{"E:\\Desarrollo\\reactjs-test\\src\\Services\\Messages.js":149}],163:[function(require,module,exports){
+},{"E:\\Desarrollo\\React-Testing\\src\\Services\\Messages.js":149}],163:[function(require,module,exports){
 module.exports=require(150)
-},{"./Bus":160,"./Messages":162,"E:\\Desarrollo\\reactjs-test\\src\\Services\\RemoteFacade.js":150}],164:[function(require,module,exports){
+},{"./Bus":160,"./Messages":162,"E:\\Desarrollo\\React-Testing\\src\\Services\\RemoteFacade.js":150}],164:[function(require,module,exports){
 module.exports=require(151)
-},{"E:\\Desarrollo\\reactjs-test\\src\\Services\\Settings.js":151}]},{},[152,153,154,155,156,157,158,159,160,161,162,163,164]);
+},{"E:\\Desarrollo\\React-Testing\\src\\Services\\Settings.js":151}]},{},[152,153,154,155,156,157,158,159,160,161,162,163,164]);

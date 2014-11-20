@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <title>Pruebas Css</title>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/test.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script type="application/javascript">
+$(function(){
+
+     $('#addOrder').click(function(){
+
+         var identity = getGUID();
+
+         var newOrder = $('<div></div>');
+         newOrder.attr('id', identity);
+         newOrder.addClass('order');
+         newOrder.addClass('animated zoomIn');
+         var count = Math.floor((Math.random() * 3) + 1);
+
+         for(i = 0; i < count; i++){
+                newOrder.append('<p>' +
+                'Ese pedazo de llevame al sircoo te va a hasé'  +
+                'pupitaa pecador ese hombree no puedor ' +
+                '</p>')
+         }
+         $('#mainContainer').append(newOrder);
+    });
+
+    $('#deleteOrder').click(function(){
+        var main = document.getElementById('mainContainer');
+        var divs = main.getElementsByTagName('div');
+        var lastDiv = divs[divs.length-1];
+
+        main.removeChild(lastDiv);
+    });
+
+    function S4() {
+        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    }
+
+    var getGUID = function(){
+        guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+        return guid;
+    };
+
+
+
+
+});
+    </script>
+</head>
+<body>
+    <div id="mainContainer" class="reading-canvas">
+
+        <div class="order">
+            <p>
+                Va usté muy cargadoo a gramenawer caballo blanco
+                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
+            </p>
+        </div>
+        <div class="order">
+            <p>
+                Va usté muy cargadoo a gramenawer caballo blanco
+                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
+            </p>
+        </div>
+        <div class="order">
+            <p>
+                Va usté muy cargadoo a gramenawer caballo blanco
+                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
+            </p>
+        </div>
+        <div class="order">
+            <p>
+                Va usté muy cargadoo a gramenawer caballo blanco
+                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
+            </p>
+        </div>
+
+
+    </div>
+    <div id="controls">
+        <button id="addOrder" class="btn btn-success">Añadir Orden</button>
+        <button id="deleteOrder" class="btn btn-success">Eliminar Orden</button>
+    </div>
+</body>
+</html>
