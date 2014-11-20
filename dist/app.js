@@ -18436,6 +18436,7 @@ module.exports = new Settings();
 var React = require('react');
 var KicthenDisplay = require('./KitchenDisplay');
 var Configuration = require('./Configuration');
+var CssPage = require('./CssPage');
 var settings = require('../Services/Settings');
 
 var AppScreen = React.createClass({displayName: 'AppScreen',
@@ -18449,6 +18450,10 @@ var AppScreen = React.createClass({displayName: 'AppScreen',
 		return React.createElement(Configuration, {goToKitchenDisplay: this.goToKitchenDisplay});
 	},
 
+	createCssPage : function(){
+		return React.createElement(CssPage, {goToCssPage: this.goToCssPage});
+	},
+
 	goToConfiguration : function() {
 		this.setState({currentPage : this.createConfigurationElement() });
 	},
@@ -18457,11 +18462,18 @@ var AppScreen = React.createClass({displayName: 'AppScreen',
 		this.setState({currentPage : this.createKitchenDisplayElement() });
 	},
 
+	goToCssPage : function() {
+		this.setState({currentPage : this.createCssPage() });
+	},
+
 	getInitialState: function(){
 
-		return settings.isInitialized()? 
+		return{
+			currentPage: this.createCssPage()
+		};
+		/*return settings.isInitialized()?
 			{ currentPage : this.createKitchenDisplayElement() } : 
-			{ currentPage : this.createConfigurationElement() };	
+			{ currentPage : this.createConfigurationElement() };	*/
 	},
 
 	render: function() {
@@ -18470,7 +18482,7 @@ var AppScreen = React.createClass({displayName: 'AppScreen',
 });
 
 module.exports = AppScreen;
-},{"../Services/Settings":151,"./Configuration":153,"./KitchenDisplay":154,"react":147}],153:[function(require,module,exports){
+},{"../Services/Settings":151,"./Configuration":153,"./CssPage":154,"./KitchenDisplay":155,"react":147}],153:[function(require,module,exports){
 /** @jsx React.DOM */
 
 "use strict";
@@ -18624,6 +18636,32 @@ module.exports = Configuration;
 "use strict";
 
 var React = require('react');
+
+var Configuration = React.createClass({displayName: 'Configuration',
+
+    getInitialState: function(){
+
+        return {
+        };
+    },
+
+    render: function() {
+
+        return React.createElement("div", {id: "mainContainer"}
+
+            
+
+        )
+
+        ;
+    }
+});
+},{"react":147}],155:[function(require,module,exports){
+/** @jsx React.DOM */
+
+"use strict";
+
+var React = require('react');
 var PreparationList = require('./PreparationList');
 var PreparationListSelector = require('./PreparationListSelector');
 
@@ -18735,7 +18773,7 @@ function getPreparedSamplePreparations(){
 }
 
 module.exports = KitchenDisplay;
-},{"./PreparationList":156,"./PreparationListSelector":157,"react":147}],155:[function(require,module,exports){
+},{"./PreparationList":157,"./PreparationListSelector":158,"react":147}],156:[function(require,module,exports){
 /** @jsx React.DOM */
 
 "use strict";
@@ -18775,7 +18813,7 @@ var Preparation = React.createClass({displayName: 'Preparation',
 });
 
 module.exports = Preparation;
-},{"react":147}],156:[function(require,module,exports){
+},{"react":147}],157:[function(require,module,exports){
 /** @jsx React.DOM */
  
 "use strict";
@@ -18796,7 +18834,7 @@ var PreparationList = React.createClass({displayName: 'PreparationList',
 });
 
 module.exports = PreparationList;
-},{"./Preparation":155,"react":147}],157:[function(require,module,exports){
+},{"./Preparation":156,"react":147}],158:[function(require,module,exports){
 /** @jsx React.DOM */
 
 "use strict"; 
@@ -18827,7 +18865,7 @@ var PreparationListSelector = React.createClass({displayName: 'PreparationListSe
 });
 
 module.exports = PreparationListSelector;
-},{"react":147}],158:[function(require,module,exports){
+},{"react":147}],159:[function(require,module,exports){
 /** @jsx React.DOM */
 
 "use strict";
@@ -18842,9 +18880,9 @@ $(function(){
 });
 
 
-},{"./components/AppScreen.js":152,"react":147}],159:[function(require,module,exports){
+},{"./components/AppScreen.js":152,"react":147}],160:[function(require,module,exports){
 module.exports=require(148)
-},{"./Messages":161,"E:\\Desarrollo\\reactjs-test\\reactjs-test\\src\\Services\\Bus.js":148}],160:[function(require,module,exports){
+},{"./Messages":162,"E:\\Desarrollo\\reactjs-test\\src\\Services\\Bus.js":148}],161:[function(require,module,exports){
 /*global require, module, window */
 
 function Localize() {
@@ -18920,10 +18958,10 @@ function Localize() {
 
 module.exports = new Localize();
 
-},{"./Settings":163}],161:[function(require,module,exports){
+},{"./Settings":164}],162:[function(require,module,exports){
 module.exports=require(149)
-},{"E:\\Desarrollo\\reactjs-test\\reactjs-test\\src\\Services\\Messages.js":149}],162:[function(require,module,exports){
+},{"E:\\Desarrollo\\reactjs-test\\src\\Services\\Messages.js":149}],163:[function(require,module,exports){
 module.exports=require(150)
-},{"./Bus":159,"./Messages":161,"E:\\Desarrollo\\reactjs-test\\reactjs-test\\src\\Services\\RemoteFacade.js":150}],163:[function(require,module,exports){
+},{"./Bus":160,"./Messages":162,"E:\\Desarrollo\\reactjs-test\\src\\Services\\RemoteFacade.js":150}],164:[function(require,module,exports){
 module.exports=require(151)
-},{"E:\\Desarrollo\\reactjs-test\\reactjs-test\\src\\Services\\Settings.js":151}]},{},[152,153,154,155,156,157,158,159,160,161,162,163]);
+},{"E:\\Desarrollo\\reactjs-test\\src\\Services\\Settings.js":151}]},{},[152,153,154,155,156,157,158,159,160,161,162,163,164]);

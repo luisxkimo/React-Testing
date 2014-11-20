@@ -5,6 +5,7 @@
 var React = require('react');
 var KicthenDisplay = require('./KitchenDisplay');
 var Configuration = require('./Configuration');
+var CssPage = require('./CssPage');
 var settings = require('../Services/Settings');
 
 var AppScreen = React.createClass({
@@ -18,6 +19,10 @@ var AppScreen = React.createClass({
 		return <Configuration goToKitchenDisplay={this.goToKitchenDisplay} />;
 	},
 
+	createCssPage : function(){
+		return <CssPage goToCssPage={this.goToCssPage}/>;
+	},
+
 	goToConfiguration : function() {
 		this.setState({currentPage : this.createConfigurationElement() });
 	},
@@ -26,11 +31,18 @@ var AppScreen = React.createClass({
 		this.setState({currentPage : this.createKitchenDisplayElement() });
 	},
 
+	goToCssPage : function() {
+		this.setState({currentPage : this.createCssPage() });
+	},
+
 	getInitialState: function(){
 
-		return settings.isInitialized()? 
+		return{
+			currentPage: this.createCssPage()
+		};
+		/*return settings.isInitialized()?
 			{ currentPage : this.createKitchenDisplayElement() } : 
-			{ currentPage : this.createConfigurationElement() };	
+			{ currentPage : this.createConfigurationElement() };	*/
 	},
 
 	render: function() {
