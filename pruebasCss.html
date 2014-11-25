@@ -2,17 +2,52 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <title>Pruebas Css</title>
+
+    <!-- De momento pasamos del animate.css porque no va bien con las columnas-->
     <!--<link rel="stylesheet" href="css/animate.css"/>-->
-    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Pasamos a utilizar animation.css que va mejor con las columnas-->
+    <!--<link rel="stylesheet" href="css/animations.css">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">-->
+
+    <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/test.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <!--Dejamos preparado el autoScroll.js para probar luego-->
+    <!--<script src="css/autoScroll.js"></script>-->
 
     <script type="application/javascript">
 $(function(){
+
+    $('mainContainer').ready(function(){
+        var items = [];
+        $.getJSON( "data/orders.json", function( data ) {
+            var subItems = [];
+            $.each(data, function (key, val) {
+               var headItem =
+               "<div class='order' id='"+val._id+"'>" +
+                "<p>"+
+                    "<dl>"+
+                        "<dt>Mesa "+ val.tableId +"</dt>";
+
+                $.each(val.items,function(key,value){
+                    subItems.push("<dd>"+value.quantity+" x "+value.product+"</dd>");
+                });
+
+                var footerItem = "</dl></p></div>";
+
+                var itemfinal = headItem + subItems.join("") + footerItem;
+                items.push(itemfinal);
+            });
+            $.each(items, function(i, item){
+                $('#mainContainer').append(item);
+            });
+        });
+    });
 
      $('#addOrder').click(function(){
 
@@ -21,16 +56,22 @@ $(function(){
          var newOrder = $('<div></div>');
          newOrder.attr('id', identity);
          newOrder.addClass('order');
-         newOrder.addClass('fadeIn');
+         newOrder.addClass('bigEntrance');
          var count = Math.floor((Math.random() * 3) + 1);
-
+         var order = '<p>' +
+                 '<dl>'+
+                 '<dt>Mesa '+count+'</dt>';
          for(i = 0; i < count; i++){
-                newOrder.append('<p>' +
-                'Ese pedazo de llevame al sircoo te va a hasé'  +
-                'pupitaa pecador ese hombree no puedor ' +
-                '</p>')
+
+             order = order + '<dd> 1 x Patatas Fritas </dd>'+
+             '<dd> 2 x Burguer sin queso</dd>'+
+             '<dd> 1 x Fingers de pollo</dd>';
          }
-         $('#mainContainer').append(newOrder);
+
+         newOrder.append(order+
+                 '</dl>'+
+                 '</p>');
+          $('#mainContainer').append(newOrder);
     });
 
     $('#deleteOrder').click(function(){
@@ -38,7 +79,21 @@ $(function(){
         var divs = main.getElementsByTagName('div');
         var lastDiv = divs[divs.length-1];
 
-        main.removeChild(lastDiv).delay(1000);
+        main.removeChild(lastDiv);
+    });
+
+    $('#leftScroll').click(function(){
+        var position = $('#mainContainer').scrollLeft();
+        $('#mainContainer').scrollLeft(position - 178);
+
+    });
+
+    $('#rightScroll').click(function(){
+
+        var position = $('#mainContainer').scrollLeft();
+        var viewScroll= document.getElementById('mainContainer').clientWidth;
+        var z = document.getElementById('mainContainer').scrollWidth;
+        $('#mainContainer').scrollLeft(position + 178);
     });
 
     function S4() {
@@ -46,49 +101,36 @@ $(function(){
     }
 
     var getGUID = function(){
-        guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+        guid = (S4() + S4() + "-" + S4() + "-4"
+        + S4().substr(0,3) + "-" + S4() + "-"
+        + S4() + S4() + S4()).toLowerCase();
         return guid;
     };
-
-
-
-
 });
     </script>
 </head>
 <body>
     <div id="mainContainer" class="reading-canvas">
 
-        <div class="order">
-            <p>
-                Va usté muy cargadoo a gramenawer caballo blanco
-                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
-            </p>
-        </div>
-        <div class="order">
-            <p>
-                Va usté muy cargadoo a gramenawer caballo blanco
-                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
-            </p>
-        </div>
-        <div class="order">
-            <p>
-                Va usté muy cargadoo a gramenawer caballo blanco
-                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
-            </p>
-        </div>
-        <div class="order">
-            <p>
-                Va usté muy cargadoo a gramenawer caballo blanco
-                caballo negroorl al ataquerl te va a hasé pupitaa torpedo.
-            </p>
-        </div>
-
 
     </div>
-    <div id="controls">
-        <button id="addOrder" class="btn btn-success">Añadir Orden</button>
-        <button id="deleteOrder" class="btn btn-success">Eliminar Orden</button>
-    </div>
+
+    <footer class="footer">
+        <div class="footerButtons">
+            <div class="leftButtons">
+                <button id="addOrder" class="btn btn-success">Añadir Orden</button>
+                <button id="deleteOrder" class="btn btn-success">Eliminar Orden</button>
+            </div>
+            <div id="preparationTypes" class="centerButtons">
+                <button id="" class="btn btn-success">Primeros</button>
+                <button id="" class="btn btn-success">Segundos</button>
+                <button id="" class="btn btn-success">Postres</button>
+            </div>
+            <div class="rightButtons">
+                <button id="leftScroll" class="btn btn-warning">Left</button>
+                <button id="rightScroll" class="btn btn-warning">Right</button>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
