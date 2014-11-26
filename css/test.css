@@ -70,30 +70,48 @@ dd{
 
 
 #mainContainer{
+
     width: 0 auto;
     margin: 1em;
     margin-bottom: 0.1em;
-    border: 0.2em solid #63604f;
     -webkit-box-sizing: border-box;
+    background-color: #ffffff;
+    max-height: 80vh;
+    overflow-y:hidden;
+
+    border: 0.1em solid #63604f;
+    -webkit-border-radius: 5px 5px 5px 5px;
+
 }
 
 .order{
     height: auto;
     margin-bottom: 0.6em;
-    border: 0.1em solid #ff8026;
+    border: 0.1em solid #757260;
     padding: 0.1em;
+    margin: 0.3em;
     -webkit-animation-duration: 1s;
+    -webkit-box-shadow: 3px 0px 8px 0px rgba(50, 50, 50, 0.75);
+    -webkit-border-radius: 10px 10px 10px 10px;
+    background-color: #FCF9E7;
 }
 
 .reading-canvas {
-    padding: 1em;
-    -webkit-column-width: 10em;
-    -webkit-column-gap: 1rem;
-    height: 90vh;
-    overflow-x: auto;
-    overflow-y:hidden;
-    margin-bottom: 4em;
+    height : 90vh;
 
+    -webkit-column-width : 10em;
+    -webkit-column-gap : 0.5rem;
+    -webkit-overflow-scrolling:touch;
+    -webkit-column-fill: auto;
+
+    white-space : normal;
+    margin-right: 1em;
+    overflow-x: scroll;
+    overflow: scroll;
+
+    column-width: 15em;
+    column-gap: 1px;
+    column-fill : auto;
 }
 .reading-canvas p:last-child {
     margin-bottom:0

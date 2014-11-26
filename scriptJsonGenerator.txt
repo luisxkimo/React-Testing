@@ -1,5 +1,5 @@
 [
-  '{{repeat(5, 7)}}',
+  '{{repeat(9, 15)}}',
   {
     _id: '{{objectId()}}',
     tableId: '{{integer(5,30)}}',

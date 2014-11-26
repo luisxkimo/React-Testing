@@ -15,86 +15,87 @@
 
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/test.css"/>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <!--Dejamos preparado el autoScroll.js para probar luego-->
     <!--<script src="css/autoScroll.js"></script>-->
 
     <script type="application/javascript">
-$(function(){
+/*$(function(){});*/
 
-    $('mainContainer').ready(function(){
+window.onload = function(){
+
         var items = [];
-        $.getJSON( "data/orders.json", function( data ) {
-            var subItems = [];
-            $.each(data, function (key, val) {
-               var headItem =
-               "<div class='order' id='"+val._id+"'>" +
-                "<p>"+
-                    "<dl>"+
-                        "<dt>Mesa "+ val.tableId +"</dt>";
 
-                $.each(val.items,function(key,value){
-                    subItems.push("<dd>"+value.quantity+" x "+value.product+"</dd>");
-                });
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://www.json-generator.com/api/json/get/bRndgkpKoO?indent=2', true);
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400){
+                // Success!
+                data = JSON.parse(request.responseText);
 
-                var footerItem = "</dl></p></div>";
+                for(i=0; i< data.length; i++){
+                    var subItems = [];
+                    var currentItem = data[i];
 
-                var itemfinal = headItem + subItems.join("") + footerItem;
-                items.push(itemfinal);
-            });
-            $.each(items, function(i, item){
-                $('#mainContainer').append(item);
-            });
-        });
+                    var headItem =
+                            "<div class='order' id='"+currentItem._id+"'>" +
+                            "<p><button onClick='ponerColorRojo(this);'>Cancel</button>"+
+                            "<dl>"+
+                            "<dt>Mesa "+ currentItem.tableId +"</dt>";
+
+                    for(j=0; j<currentItem.items.length; j++){
+                        subItems.push("<dd>"+currentItem.items[j].quantity+" x "+currentItem.items[j].product+"</dd>");
+                    };
+
+                    var footerItem = "</dl></p></div>";
+
+                    var itemfinal = headItem + subItems.join("") + footerItem;
+                    items.push(itemfinal);
+                }
+
+                for(i = 0; i < items.length; i++){
+                    var main = document.getElementById('mainContainer');
+                    var element = items[i];
+                    main.innerHTML =  main.innerHTML + element;
+                };
+
+            } else {
+                // We reached our target server, but it returned an error
+
+            }
+        };
+
+        request.send();
+
+    $('#addOrder').click(function(){
+
+        var identity = getGUID();
+
+        var newOrder = $('<div></div>');
+        newOrder.attr('id', identity);
+        newOrder.addClass('order');
+        newOrder.addClass('bigEntrance');
+        var count = Math.floor((Math.random() * 3) + 1);
+        var order = '<p>' +
+                '<dl>'+
+                '<dt>Mesa '+count+'</dt>';
+        for(i = 0; i < count; i++){
+
+            order = order + '<dd> 1 x Patatas Fritas </dd>'+
+            '<dd> 2 x Burguer sin queso</dd>'+
+            '<dd> 1 x Fingers de pollo</dd>';
+        }
+
+        newOrder.append(order+
+        '</dl>'+
+        '</p>');
+        $('#mainContainer').append(newOrder);
     });
 
-     $('#addOrder').click(function(){
 
-         var identity = getGUID();
 
-         var newOrder = $('<div></div>');
-         newOrder.attr('id', identity);
-         newOrder.addClass('order');
-         newOrder.addClass('bigEntrance');
-         var count = Math.floor((Math.random() * 3) + 1);
-         var order = '<p>' +
-                 '<dl>'+
-                 '<dt>Mesa '+count+'</dt>';
-         for(i = 0; i < count; i++){
 
-             order = order + '<dd> 1 x Patatas Fritas </dd>'+
-             '<dd> 2 x Burguer sin queso</dd>'+
-             '<dd> 1 x Fingers de pollo</dd>';
-         }
-
-         newOrder.append(order+
-                 '</dl>'+
-                 '</p>');
-          $('#mainContainer').append(newOrder);
-    });
-
-    $('#deleteOrder').click(function(){
-        var main = document.getElementById('mainContainer');
-        var divs = main.getElementsByTagName('div');
-        var lastDiv = divs[divs.length-1];
-
-        main.removeChild(lastDiv);
-    });
-
-    $('#leftScroll').click(function(){
-        var position = $('#mainContainer').scrollLeft();
-        $('#mainContainer').scrollLeft(position - 178);
-
-    });
-
-    $('#rightScroll').click(function(){
-
-        var position = $('#mainContainer').scrollLeft();
-        var viewScroll= document.getElementById('mainContainer').clientWidth;
-        var z = document.getElementById('mainContainer').scrollWidth;
-        $('#mainContainer').scrollLeft(position + 178);
-    });
 
     function S4() {
         return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
@@ -106,31 +107,58 @@ $(function(){
         + S4() + S4() + S4()).toLowerCase();
         return guid;
     };
-});
+};
+
+function removeOrder(){
+    var main = document.getElementById('mainContainer');
+    var divs = main.getElementsByTagName('div');
+    var lastDiv = divs[divs.length-1];
+
+    main.removeChild(lastDiv);
+}
+
+function leftScroll(){
+
+    var container = document.getElementById('mainContainer');
+    container.scrollLeft = container.scrollLeft - 178;
+
+};
+
+function rightScroll(){
+    var container = document.getElementById('mainContainer');
+    container.scrollLeft = container.scrollLeft + 178;;
+};
+
+function ponerColorRojo(element){
+    var container = element.parentNode.parentNode.style.backgroundColor = "red";
+};
+
+
     </script>
 </head>
 <body>
     <div id="mainContainer" class="reading-canvas">
-
-
     </div>
+
+
 
     <footer class="footer">
         <div class="footerButtons">
             <div class="leftButtons">
-                <button id="addOrder" class="btn btn-success">Añadir Orden</button>
-                <button id="deleteOrder" class="btn btn-success">Eliminar Orden</button>
+                <input type="button" id="addOrder" value="Añadir Orden"/>
+                <input type="button" id="deleteOrder" value="Eliminar Orden" onClick="removeOrder();"/>
             </div>
             <div id="preparationTypes" class="centerButtons">
-                <button id="" class="btn btn-success">Primeros</button>
-                <button id="" class="btn btn-success">Segundos</button>
-                <button id="" class="btn btn-success">Postres</button>
+                <button  class="btn btn-success">Primeros</button>
+                <button class="btn btn-success">Segundos</button>
+                <button  class="btn btn-success">Postres</button>
             </div>
             <div class="rightButtons">
-                <button id="leftScroll" class="btn btn-warning">Left</button>
-                <button id="rightScroll" class="btn btn-warning">Right</button>
+                <input type="button" id="leftScroll" value ="Left" onClick="leftScroll();"/>
+                <input type="button" id="rightScroll" value ="Right" onClick="rightScroll();"/>
             </div>
         </div>
     </footer>
+
 </body>
 </html>
