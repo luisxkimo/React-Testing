@@ -28,21 +28,50 @@ dd{
 
 /* Page Styles
 *
-* Styles for orders and main container
+* Layout de la página
 */
 
-.footer{
-    bottom: 0;
+#main {
     position: fixed;
     width: 100%;
-    height: 3em;
-    border-top: 3px solid #63604f;
-    background-color: white;
-    display:table;
-    border-collapse:collapse;
+    height: 100%;
 }
 
-.footer button, div{
+#main > .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+
+    background-color: #ffffff;
+}
+
+#main > footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+
+    border-top: 3px solid #63604f;
+    background-color: white;
+}
+
+.horizontal-columns {
+    -webkit-column-width : 15em;
+    -webkit-column-gap : 2rem;
+
+    -webkit-overflow-scrolling: touch;
+    -webkit-column-fill: auto;
+
+    overflow-x: scroll;
+}
+
+
+/* Botones del footer */
+
+.footer button, .footer div{
     height: 100%;
 }
 
@@ -69,20 +98,7 @@ dd{
 */
 
 
-#mainContainer{
 
-    width: 0 auto;
-    margin: 1em;
-    margin-bottom: 0.1em;
-    -webkit-box-sizing: border-box;
-    background-color: #ffffff;
-    max-height: 80vh;
-    overflow-y:hidden;
-
-    border: 0.1em solid #63604f;
-    -webkit-border-radius: 5px 5px 5px 5px;
-
-}
 
 .order{
     height: auto;
@@ -96,23 +112,6 @@ dd{
     background-color: #FCF9E7;
 }
 
-.reading-canvas {
-    height : 90vh;
-
-    -webkit-column-width : 10em;
-    -webkit-column-gap : 0.5rem;
-    -webkit-overflow-scrolling:touch;
-    -webkit-column-fill: auto;
-
-    white-space : normal;
-    margin-right: 1em;
-    overflow-x: scroll;
-    overflow: scroll;
-
-    column-width: 15em;
-    column-gap: 1px;
-    column-fill : auto;
-}
 .reading-canvas p:last-child {
     margin-bottom:0
 }

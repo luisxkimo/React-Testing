@@ -55,7 +55,7 @@ window.onload = function(){
                 }
 
                 for(i = 0; i < items.length; i++){
-                    var main = document.getElementById('mainContainer');
+                    var main = document.querySelector('#main > .container');
                     var element = items[i];
                     main.innerHTML =  main.innerHTML + element;
                 };
@@ -90,7 +90,7 @@ window.onload = function(){
         newOrder.append(order+
         '</dl>'+
         '</p>');
-        $('#mainContainer').append(newOrder);
+        $('.container.horizontal-columns').append(newOrder);
     });
 
 
@@ -110,7 +110,7 @@ window.onload = function(){
 };
 
 function removeOrder(){
-    var main = document.getElementById('mainContainer');
+    var main = document.querySelector('#main > .container');
     var divs = main.getElementsByTagName('div');
     var lastDiv = divs[divs.length-1];
 
@@ -119,13 +119,13 @@ function removeOrder(){
 
 function leftScroll(){
 
-    var container = document.getElementById('mainContainer');
+    var container = document.querySelector('#main > .container');
     container.scrollLeft = container.scrollLeft - 178;
 
 };
 
 function rightScroll(){
-    var container = document.getElementById('mainContainer');
+    var container = document.querySelector('#main > .container');
     container.scrollLeft = container.scrollLeft + 178;;
 };
 
@@ -137,28 +137,30 @@ function ponerColorRojo(element){
     </script>
 </head>
 <body>
-    <div id="mainContainer" class="reading-canvas">
-    </div>
+    <div id="main" >
+
+        <div class="container horizontal-columns">
 
 
-
-    <footer class="footer">
-        <div class="footerButtons">
-            <div class="leftButtons">
-                <input type="button" id="addOrder" value="Añadir Orden"/>
-                <input type="button" id="deleteOrder" value="Eliminar Orden" onClick="removeOrder();"/>
-            </div>
-            <div id="preparationTypes" class="centerButtons">
-                <button  class="btn btn-success">Primeros</button>
-                <button class="btn btn-success">Segundos</button>
-                <button  class="btn btn-success">Postres</button>
-            </div>
-            <div class="rightButtons">
-                <input type="button" id="leftScroll" value ="Left" onClick="leftScroll();"/>
-                <input type="button" id="rightScroll" value ="Right" onClick="rightScroll();"/>
-            </div>
         </div>
-    </footer>
+        <footer>
+            <div class="footerButtons">
 
+                <div class="leftButtons">
+                    <input type="button" id="addOrder" value="Añadir Orden"/>
+                    <input type="button" id="deleteOrder" value="Eliminar Orden" onClick="removeOrder();"/>
+                </div>
+                <div id="preparationTypes" class="centerButtons">
+                    <button  class="btn btn-success">Primeros</button>
+                    <button class="btn btn-success">Segundos</button>
+                    <button  class="btn btn-success">Postres</button>
+                </div>
+                <div class="rightButtons">
+                    <input type="button" id="leftScroll" value ="Left" onClick="leftScroll();"/>
+                    <input type="button" id="rightScroll" value ="Right" onClick="rightScroll();"/>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
