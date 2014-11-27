@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <title>Pruebas Css</title>
 
-    <!-- De momento pasamos del animate.css porque no va bien con las columnas-->
-    <!--<link rel="stylesheet" href="css/animate.css"/>-->
-
     <!-- Pasamos a utilizar animation.css que va mejor con las columnas-->
     <!--<link rel="stylesheet" href="css/animations.css">-->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -15,140 +12,27 @@
 
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/test.css"/>
+
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="lib/fastclick.js"></script>
+    <script src="lib/footerOptions.js"></script>
 
     <!--Dejamos preparado el autoScroll.js para probar luego-->
     <!--<script src="css/autoScroll.js"></script>-->
 
-    <script type="application/javascript">
-/*$(function(){});*/
-
-window.onload = function(){
-
-        var items = [];
-
-        var request = new XMLHttpRequest();
-        request.open('GET', 'http://www.json-generator.com/api/json/get/bRndgkpKoO?indent=2', true);
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400){
-                // Success!
-                data = JSON.parse(request.responseText);
-
-                for(i=0; i< data.length; i++){
-                    var subItems = [];
-                    var currentItem = data[i];
-
-                    var headItem =
-                            "<div class='order' id='"+currentItem._id+"'>" +
-                            "<p><button onClick='ponerColorRojo(this);'>Cancel</button>"+
-                            "<dl>"+
-                            "<dt>Mesa "+ currentItem.tableId +"</dt>";
-
-                    for(j=0; j<currentItem.items.length; j++){
-                        subItems.push("<dd>"+currentItem.items[j].quantity+" x "+currentItem.items[j].product+"</dd>");
-                    };
-
-                    var footerItem = "</dl></p></div>";
-
-                    var itemfinal = headItem + subItems.join("") + footerItem;
-                    items.push(itemfinal);
-                }
-
-                for(i = 0; i < items.length; i++){
-                    var main = document.querySelector('#main > .container');
-                    var element = items[i];
-                    main.innerHTML =  main.innerHTML + element;
-                };
-
-            } else {
-                // We reached our target server, but it returned an error
-
-            }
-        };
-
-        request.send();
-
-    $('#addOrder').click(function(){
-
-        var identity = getGUID();
-
-        var newOrder = $('<div></div>');
-        newOrder.attr('id', identity);
-        newOrder.addClass('order');
-        newOrder.addClass('bigEntrance');
-        var count = Math.floor((Math.random() * 3) + 1);
-        var order = '<p>' +
-                '<dl>'+
-                '<dt>Mesa '+count+'</dt>';
-        for(i = 0; i < count; i++){
-
-            order = order + '<dd> 1 x Patatas Fritas </dd>'+
-            '<dd> 2 x Burguer sin queso</dd>'+
-            '<dd> 1 x Fingers de pollo</dd>';
-        }
-
-        newOrder.append(order+
-        '</dl>'+
-        '</p>');
-        $('.container.horizontal-columns').append(newOrder);
-    });
-
-
-
-
-
-    function S4() {
-        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    }
-
-    var getGUID = function(){
-        guid = (S4() + S4() + "-" + S4() + "-4"
-        + S4().substr(0,3) + "-" + S4() + "-"
-        + S4() + S4() + S4()).toLowerCase();
-        return guid;
-    };
-};
-
-function removeOrder(){
-    var main = document.querySelector('#main > .container');
-    var divs = main.getElementsByTagName('div');
-    var lastDiv = divs[divs.length-1];
-
-    main.removeChild(lastDiv);
-}
-
-function leftScroll(){
-
-    var container = document.querySelector('#main > .container');
-    container.scrollLeft = container.scrollLeft - 178;
-
-};
-
-function rightScroll(){
-    var container = document.querySelector('#main > .container');
-    container.scrollLeft = container.scrollLeft + 178;;
-};
-
-function ponerColorRojo(element){
-    var container = element.parentNode.parentNode.style.backgroundColor = "red";
-};
-
-
-    </script>
 </head>
 <body>
-    <div id="main" >
+    <div id="main">
 
-        <div class="container horizontal-columns">
-
-
+        <div id="orders" class="container horizontal-columns" >
         </div>
+
         <footer>
             <div class="footerButtons">
 
                 <div class="leftButtons">
                     <input type="button" id="addOrder" value="Añadir Orden"/>
-                    <input type="button" id="deleteOrder" value="Eliminar Orden" onClick="removeOrder();"/>
+                    <input type="button" id="deleteOrder" value="Eliminar Orden"/>
                 </div>
                 <div id="preparationTypes" class="centerButtons">
                     <button  class="btn btn-success">Primeros</button>
@@ -156,8 +40,10 @@ function ponerColorRojo(element){
                     <button  class="btn btn-success">Postres</button>
                 </div>
                 <div class="rightButtons">
-                    <input type="button" id="leftScroll" value ="Left" onClick="leftScroll();"/>
-                    <input type="button" id="rightScroll" value ="Right" onClick="rightScroll();"/>
+                    <input type="button" id="leftScroll" value =" < "/>
+                    <input type="button" id="rightScroll" value =" > "/>
+                    <input type="button" id="prevPage" value =" << "/>
+                    <input type="button" id="nextPage" value =" >> "/>
                 </div>
             </div>
         </footer>

@@ -44,7 +44,7 @@ dd{
     right: 0;
     bottom: 50px;
 
-    background-color: #ffffff;
+    background-color: #C3C3C3;
 }
 
 #main > footer{
@@ -59,38 +59,43 @@ dd{
 }
 
 .horizontal-columns {
-    -webkit-column-width : 15em;
-    -webkit-column-gap : 2rem;
+    -webkit-column-width : 200px;
+    -webkit-column-gap : 10px;
+
+    -webkit-column-break-inside: left;
 
     -webkit-overflow-scrolling: touch;
     -webkit-column-fill: auto;
-
+    padding-left: 10px;
     overflow-x: scroll;
+
 }
 
+.horizontal-columns .overview {
+    width: 1000px;
+}
 
 /* Botones del footer */
 
-.footer button, .footer div{
+.footerButtons>div{
+    height: 100%;
+    display:inline-block;
+}
+
+.footerButtons input{
     height: 100%;
 }
 
 .footerButtons{
-    display: table-row;
-
-}
-
-.footerButtons div{
-    display: table-cell;
-
+    height: 100%;
 }
 
 .rightButtons{
-    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
 }
-
-
-
 
 /* Orders Styles
 *
@@ -98,14 +103,9 @@ dd{
 */
 
 
-
-
 .order{
-    height: auto;
     margin-bottom: 0.6em;
-    border: 0.1em solid #757260;
-    padding: 0.1em;
-    margin: 0.3em;
+    padding: 10px;
     -webkit-animation-duration: 1s;
     -webkit-box-shadow: 3px 0px 8px 0px rgba(50, 50, 50, 0.75);
     -webkit-border-radius: 10px 10px 10px 10px;
@@ -117,17 +117,6 @@ dd{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* Extra Styles
 *
 * Style for buttons and controls
@@ -135,4 +124,18 @@ dd{
 
 #controls{
     margin-left:2em ;
+}
+
+::-webkit-scrollbar {
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    background-color: rgba(47, 73, 221, 0.50);
+    width: 30px;
 }
