@@ -62,8 +62,6 @@ dd{
     -webkit-column-width : 200px;
     -webkit-column-gap : 10px;
 
-    -webkit-column-break-inside: left;
-
     -webkit-overflow-scrolling: touch;
     -webkit-column-fill: auto;
     padding-left: 10px;
